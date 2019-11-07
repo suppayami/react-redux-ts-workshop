@@ -1,17 +1,16 @@
 import React, { useCallback, useState } from 'react'
 
+import { useCounter } from '../hook/useCounter'
+
 interface CounterHookProps {
     text: string
 }
 
 export const CounterHook: React.FunctionComponent<CounterHookProps> = ({ text }) => {
-    const [counter, setCounter] = useState(0)
-    const increaseCounter = useCallback<React.MouseEventHandler<HTMLButtonElement>>((event) => {
-        setCounter(prev => prev + 1)
-    }, [setCounter])
+    const [counter, incrementFunction] = useCounter(0)
 
     return <div>
         <p>{text}: {counter}</p>
-        <button onClick={increaseCounter}>Increase Counter</button>
+        <button onClick={incrementFunction}>Increase Counter</button>
     </div>
 }

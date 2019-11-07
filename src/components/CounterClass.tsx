@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { withFixedText } from '../hoc/withFixedText'
+import { withTitle } from '../hoc/withTitle'
+
 interface CounterClassProps {
     text: string
 }
@@ -26,3 +29,8 @@ export class CounterClass extends React.Component<CounterClassProps, CounterClas
         </div>
     }
 }
+
+export const CounterClassWithTitle = withTitle(CounterClass)
+export const CounterClassWithFixedText = withFixedText('Counter class')(CounterClass)
+
+export const CounterClassComposed = withFixedText('Counter class composed')(withTitle(CounterClass))
